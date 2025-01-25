@@ -44,7 +44,7 @@ public class BubbleController : MonoBehaviour
         if (scrollInput != 0)
         {
             float rotationAmount = scrollInput * scrollSpeed * Time.deltaTime;
-            transform.Rotate(0f, 0f, rotationAmount);
+            transform.Rotate(rotationAmount, 0f, 0f);
         }
     }
 
