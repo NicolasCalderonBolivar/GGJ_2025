@@ -41,20 +41,19 @@ public class BubbleController : MonoBehaviour
 
     void Update() {
 
-        // Movimiento manual con las flechas
-        float horizontal = Input.GetAxis("Horizontal"); // Movimiento izquierda/derecha
-        float vertical = Input.GetAxis("Vertical"); // Movimiento arriba/abajo
+        // Obtener la entrada del teclado
+        bool moveUp = Input.GetKey(KeyCode.W);
+        bool moveDown = Input.GetKey(KeyCode.S);
+        bool moveLeft = Input.GetKey(KeyCode.A);
+        bool moveRight = Input.GetKey(KeyCode.D);
+
+        // Calcular la dirección del movimiento
+        float vertical = moveUp ? 1f : moveDown ? -1f : 0f;
+        float horizontal = moveLeft ? -1f : moveRight ? 1f : 0f;
 
         // Aplicar movimiento a la esfera sin rotarla
         Vector3 movement = new Vector3(horizontal, vertical + floatSpeed * Time.deltaTime, 0f);
         rigidbody.linearVelocity = movement * moveSpeed;
-
-        // Rotar la esfera en el eje Z con el scroll del ratón
-        // float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-        // if (scrollInput != 0) {
-        //     float rotationAmount = scrollInput * scrollSpeed * Time.deltaTime;
-        //     transform.Rotate(rotationAmount, 0f, 0f);
-        // }
     }
 
     private void OnCollisionEnter(Collision collision) {
