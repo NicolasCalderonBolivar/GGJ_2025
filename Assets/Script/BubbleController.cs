@@ -15,6 +15,8 @@ public class BubbleController : MonoBehaviour
 
     private Rigidbody rb;
 
+    private Vector3 movement; // Movimiento actual de la burbuja (horizontales y verticales)
+
     void Start()
     {
         // Guardar la posición inicial
@@ -31,21 +33,51 @@ public class BubbleController : MonoBehaviour
 
     void Update()
     {
-        // Movimiento manual con las flechas
+        // Movimiento con las flechas del teclado
         float horizontal = Input.GetAxis("Horizontal"); // Movimiento izquierda/derecha
         float vertical = Input.GetAxis("Vertical"); // Movimiento arriba/abajo
 
-        // Aplicar movimiento a la esfera sin rotarla
-        Vector3 movement = new Vector3(horizontal, vertical + floatSpeed * Time.deltaTime, 0f);
-        rb.linearVelocity = movement * moveSpeed;
+        // Actualizar el movimiento solo si las flechas o botones táctiles están activos
+        if (horizontal != 0 || vertical != 0)
+        {
+            movement = new Vector3(horizontal * moveSpeed, vertical * moveSpeed, 0f);
+        }
 
-        // Rotar la esfera en el eje Z con el scroll del ratón
+        // Aplica el movimiento solo cuando la variable 'movement' tiene algún valor
+        rb.linearVelocity = movement;
+
+        // Rotación con scroll del ratón
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
         if (scrollInput != 0)
         {
             float rotationAmount = scrollInput * scrollSpeed * Time.deltaTime;
             transform.Rotate(rotationAmount, 0f, 0f);
         }
+    }
+
+    // Métodos públicos para movimiento táctil
+    public void MoveHorizontally(float direction)
+    {
+        movement = new Vector3(direction * moveSpeed, rb.linearVelocity.y, 0f);
+    }
+
+    public void MoveVertically(float direction)
+    {
+        movement = new Vector3(rb.linearVelocity.x, direction * moveSpeed, 0f);
+    }
+
+    // Ahora la rotación se ajusta según una velocidad similar al scroll
+    public void Rotate(float direction)
+    {
+        // La rotación es proporcional al scrollSpeed, igual que cuando usas el mouse scroll
+        float rotationAmount = direction * scrollSpeed * Time.deltaTime;
+        transform.Rotate(rotationAmount, 0f, 0f);
+    }
+
+    // Método para detener el movimiento
+    public void StopMoving()
+    {
+        movement = Vector3.zero; // Detener el movimiento cuando no se presionan los botones
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -58,9 +90,13 @@ public class BubbleController : MonoBehaviour
         }
     }
 
-    private void ResetPosition()
-    {
-        transform.position = startPosition;
-        rb.linearVelocity = Vector3.zero;
-    }
+public void ResetPosition()
+{
+    transform.position = startPosition; // Restablecer la posición a la inicial
+    rb.linearVelocity = Vector3.zero; // Detener cualquier movimiento
+    rb.angularVelocity = Vector3.zero; // Detener cualquier rotación
 }
+
+
+}
+

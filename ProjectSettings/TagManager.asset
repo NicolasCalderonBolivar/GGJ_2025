@@ -5,12 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
-  - enemyTag
+  - Bubble
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 
