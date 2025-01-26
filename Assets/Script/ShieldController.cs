@@ -61,8 +61,7 @@ public class ShieldController : MonoBehaviour
             }
         }
 
-        // Reiniciar la posición de la burbuja
-        bubbleController.ResetPosition();
+        
 
         // **Reiniciar la puntuación a cero** (esto es lo que hace que pierdas el puntaje)
         score = 0;
