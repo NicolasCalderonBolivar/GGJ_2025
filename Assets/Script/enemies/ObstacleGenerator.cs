@@ -6,6 +6,7 @@ public class ObstacleGenerator : MonoBehaviour {
     public GameObject obstacleType1; // Prefab del misil
     public GameObject obstacleType2; // Prefab del misil
     public GameObject obstacleType3; // Prefab del misil
+    public GameObject obstacleType4; // Prefab del misil
 
     [Header("Spawn Settings")]
     public float speedDown = 0.1f; // Velocidad de caída
@@ -46,6 +47,9 @@ public class ObstacleGenerator : MonoBehaviour {
             case 3:
                 obstacleType = obstacleType3;
                 break;
+            case 4:
+                obstacleType = obstacleType4;
+                break;    
         }
 
         GameObject obstacle = Instantiate(obstacleType, spawnPoint, Quaternion.identity);
