@@ -6,6 +6,7 @@ public class BubbleController : MonoBehaviour
     [Header("Game Settings")]
     public string enemyTag = "Enemy"; // Tag que identifica a los enemigos
     public GameObject gameOverUI;     // Referencia al panel de "GAME OVER" y los botones
+    // public float speedFloat = 4f;   // Velocidad de la burbuja
 
     private Rigidbody rb;
 
@@ -23,6 +24,10 @@ public class BubbleController : MonoBehaviour
         {
             gameOverUI.SetActive(false);  // Desactiva la UI de Game Over
         }
+    }
+
+    private void Update() {
+        // transform.position += new Vector3(0, speedFloat * 10, 0);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -39,6 +39,16 @@ public class PlayerControls : MonoBehaviour {
         float moveX = joystickMove.Horizontal;
         float moveY = joystickMove.Vertical;
 
+        bool moveUp = Input.GetKey(KeyCode.W);
+        bool moveDown = Input.GetKey(KeyCode.S);
+        bool moveLeft = Input.GetKey(KeyCode.A);
+        bool moveRight = Input.GetKey(KeyCode.D);
+
+        moveY = moveUp ? 1 : moveY;
+        moveY = moveDown ? -1 : moveY;
+        moveX = moveLeft ? -1 : moveX;
+        moveX = moveRight ? 1 : moveX;
+
         if (moveX != 0 || moveY != 0) {
             Move(moveX, moveY);
         }
