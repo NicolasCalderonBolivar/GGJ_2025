@@ -53,7 +53,7 @@ public class ObstacleGenerator : MonoBehaviour {
         }
 
         GameObject obstacle = Instantiate(obstacleType, spawnPoint, Quaternion.identity);
-        obstacle.tag = "Enemy";
+        obstacle.tag = "Obstacle";
         
         ObstacleFall obstacleFall = obstacle.GetComponent<ObstacleFall>();
         obstacleFall.FallDown(speedDown, lifetime);

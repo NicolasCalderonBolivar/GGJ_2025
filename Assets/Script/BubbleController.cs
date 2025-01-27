@@ -33,7 +33,7 @@ public class BubbleController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Si un enemigo toca la burbuja
-        if (collision.collider.CompareTag(enemyTag))
+        if (collision.collider.CompareTag(enemyTag) || collision.collider.CompareTag("Obstacle"))
         {
             Debug.Log("GAME OVER");
             GameOver(); // Llamar a la función de fin del juego

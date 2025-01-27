@@ -13,6 +13,7 @@ public class ShieldController : MonoBehaviour {
 
     [Header("Player Settings")]
     public GameObject player; // Referencia al jugador
+    public GameObject gameOverUI;     // Referencia al panel de "GAME OVER" y los botones
 
     void Start() {
 
@@ -39,41 +40,68 @@ public class ShieldController : MonoBehaviour {
     private void Update() {
         // seguir al jugador
         transform.position = player.transform.position;
+        UpdateScore();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
-        {
+        if (other.CompareTag("Enemy")){
             // Si el escudo colisiona con un enemigo
             Destroy(other.gameObject); // Destruir al enemigo
-            score++; // Aumentar la puntuación
-            UpdateScoreUI(); // Actualizar la UI de la puntuación
+            // score++; // Aumentar la puntuación
+            // UpdateScoreUI(); // Actualizar la UI de la puntuación
         }
-        else if (other.CompareTag("Bubble"))
+        else if (other.CompareTag("Obstacle"))
         {
             // Si la burbuja colisiona con un enemigo
-            ResetGame(); // Reiniciar el juego
+            GameOver(); // Reiniciar el juego
         }
     }
 
-    private void ResetGame()
-    {
-        // Reiniciar posición y rotación de los enemigos
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            enemies[i].transform.position = initialEnemyPositions[i];
-            enemies[i].transform.rotation = initialEnemyRotations[i];
+    // private void ResetGame()
+    // {
 
-            if (enemyRigidbodies[i] != null)
-            {
-                enemyRigidbodies[i].linearVelocity = Vector3.zero; // Reiniciar la velocidad lineal
-                enemyRigidbodies[i].angularVelocity = Vector3.zero; // Reiniciar la rotación
-            }
+    //     // Reiniciar posición y rotación de los enemigos
+    //     for (int i = 0; i < enemies.Length; i++)
+    //     {
+    //         enemies[i].transform.position = initialEnemyPositions[i];
+    //         enemies[i].transform.rotation = initialEnemyRotations[i];
+
+    //         if (enemyRigidbodies[i] != null)
+    //         {
+    //             enemyRigidbodies[i].linearVelocity = Vector3.zero; // Reiniciar la velocidad lineal
+    //             enemyRigidbodies[i].angularVelocity = Vector3.zero; // Reiniciar la rotación
+    //         }
+    //     }
+
+    //     // **Reiniciar la puntuación a cero** (esto es lo que hace que pierdas el puntaje)
+    //     score = 0;
+    //     UpdateScoreUI();
+
+        
+    // }
+
+    public void GameOver() {
+        // Mostrar el mensaje de GAME OVER y los botones
+        Debug.Log("GAME OVER");
+        if (gameOverUI != null) {
+            Debug.Log("Activando menu de Game Over");
+            gameOverUI.SetActive(true);  // Activa la UI de Game Over
         }
 
-        // **Reiniciar la puntuación a cero** (esto es lo que hace que pierdas el puntaje)
-        score = 0;
+        Debug.Log("Pausando juego");
+        // Opcional: detener el tiempo del juego
+        Time.timeScale = 0f;
+    }
+
+    private void UpdateScore() {
+
+        if (Time.timeScale == 0) {
+            return;
+        }
+        
+        // Actualizar la puntuación
+        score += 1;
         UpdateScoreUI();
     }
 
@@ -81,7 +109,7 @@ public class ShieldController : MonoBehaviour {
         // Actualizar la UI de la puntuación
         if (scoreText != null) {
             // Mostrar la puntuación en la UI
-            scoreText.text = "Puntuación: " + score.ToString();
+            scoreText.text = "P " + score.ToString();
         }
     }
 }

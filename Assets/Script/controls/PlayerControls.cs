@@ -81,9 +81,7 @@ public class PlayerControls : MonoBehaviour {
         rigidbodyPlayer.linearVelocity = new Vector3(moveX, moveY, 0f) * moveSpeed;
     }
 
-    public Vector3 GetPlayerVelocity()
-{
-    return rigidbodyPlayer.linearVelocity;
-}
-
+    public Vector3 GetPlayerVelocity() {
+        return rigidbodyPlayer.linearVelocity;
+    }
 }
