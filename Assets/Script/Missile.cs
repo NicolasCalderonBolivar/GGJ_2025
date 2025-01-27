@@ -1,32 +1,33 @@
 using UnityEngine;
 
-public class Missile : MonoBehaviour
-{
+public class Missile : MonoBehaviour {
+
     private Transform target; // Referencia al objetivo (burbuja)
-    private float speed; // Velocidad del misil
-    private float lifetime; // Tiempo de vida del misil
+    private Rigidbody rb; // Referencia al Rigidbody del misil
+    public float speed; // Velocidad del misil
+    public float lifetime; // Tiempo de vida del misil
+
+    private Vector3 direction;
 
     // Método público para inicializar el misil
-    public void Initialize(Transform target, float speed, float lifetime)
-    {
+    public void shoot(Transform target, float speed, float lifetime) {
         this.target = target;
         this.speed = speed;
         this.lifetime = lifetime;
 
+        if (rb == null) {
+            rb = GetComponent<Rigidbody>();
+        }
+
+        Debug.Log("Misil inicializado con éxito. (Objetivo: " + target.name + ")");
+
         // Destruir el misil automáticamente después de su tiempo de vida
-        Destroy(gameObject, lifetime);
-    }
-
-    void Update()
-    {
-        // Si no hay objetivo, no hacemos nada
-        if (target == null) return;
-
+        var randY = Random.Range(0f, .6f);
+        direction = (target.position - transform.position).normalized + new Vector3(0, randY, 0);
         // Mover el misil hacia el objetivo
-        Vector3 direction = (target.position - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
+        rb.linearVelocity = direction * speed * 20f;
 
-        // Orientar el misil hacia el objetivo
-        transform.LookAt(target);
+        Destroy(gameObject, lifetime);
+
     }
 }

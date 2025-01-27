@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI; // Necesario para el uso de UI
 
-public class ShieldController : MonoBehaviour
-{
-    public BubbleController bubbleController; // Referencia al script de la burbuja
+public class ShieldController : MonoBehaviour {
+
     public GameObject[] enemies; // Array de enemigos en la escena
     private Vector3[] initialEnemyPositions; // Posiciones iniciales de los enemigos
     private Quaternion[] initialEnemyRotations; // Rotaciones iniciales de los enemigos
@@ -12,15 +11,22 @@ public class ShieldController : MonoBehaviour
     public int score = 0; // Puntuación del jugador
     public Text scoreText; // Referencia al objeto Text en UI para mostrar la puntuación
 
-    void Start()
-    {
+    [Header("Player Settings")]
+    public GameObject player; // Referencia al jugador
+
+    void Start() {
+
+        if (player == null) {
+            // player = GameObject.FindWithTag("Player"); // Buscar el jugador por etiqueta
+            player = GameObject.FindWithTag("Bubble"); // Buscar el jugador por etiqueta
+        }
+
         // Guardar las posiciones y rotaciones iniciales de los enemigos
         initialEnemyPositions = new Vector3[enemies.Length];
         initialEnemyRotations = new Quaternion[enemies.Length];
         enemyRigidbodies = new Rigidbody[enemies.Length];
 
-        for (int i = 0; i < enemies.Length; i++)
-        {
+        for (int i = 0; i < enemies.Length; i++) {
             initialEnemyPositions[i] = enemies[i].transform.position;
             initialEnemyRotations[i] = enemies[i].transform.rotation;
             enemyRigidbodies[i] = enemies[i].GetComponent<Rigidbody>();
@@ -28,6 +34,11 @@ public class ShieldController : MonoBehaviour
 
         // Asegúrate de que la puntuación se muestra al inicio
         UpdateScoreUI();
+    }
+
+    private void Update() {
+        // seguir al jugador
+        transform.position = player.transform.position;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,19 +72,16 @@ public class ShieldController : MonoBehaviour
             }
         }
 
-        
-
         // **Reiniciar la puntuación a cero** (esto es lo que hace que pierdas el puntaje)
         score = 0;
         UpdateScoreUI();
     }
 
-    private void UpdateScoreUI()
-    {
+    private void UpdateScoreUI() {
         // Actualizar la UI de la puntuación
-        if (scoreText != null)
-        {
-            scoreText.text = "Puntuación: " + score.ToString(); // Mostrar la puntuación en la UI
+        if (scoreText != null) {
+            // Mostrar la puntuación en la UI
+            scoreText.text = "Puntuación: " + score.ToString();
         }
     }
 }
