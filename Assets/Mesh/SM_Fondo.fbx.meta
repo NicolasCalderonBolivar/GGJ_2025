@@ -3,7 +3,12 @@ guid: f8498abd9adcd9840bc2b29d2d4e7966
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fondo
+    second: {fileID: 2100000, guid: e4f08e7499460634f9bf5bb2bb4d065f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

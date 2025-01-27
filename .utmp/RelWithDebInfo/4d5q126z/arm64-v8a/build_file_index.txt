@@ -1,0 +1,2 @@
+C:\Users\ncald\Documents\GGJ_2025Bubble_Game_2025\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\ncald\Documents\GGJ_2025Bubble_Game_2025\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
