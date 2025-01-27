@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class MissileLauncher : MonoBehaviour {
 
-    [Header("Missile Settings")]
+    [Header("References Settings")]
     public GameObject missilePrefab; // Prefab del misil
     public Transform bubble; // Referencia al objeto burbuja
-    public float missileSpeed = 10f; // Velocidad del misil
-    public float fireRate = 2f; // Intervalo entre disparos (en segundos)
 
     [Header("Spawn Settings")]
-    public Transform spawnPoint; // Punto de generación del misil
     public float missileLifetime = 10f; // Tiempo antes de que el misil se destruya automáticamente
+    public float missileSpeed = 4f; // Velocidad del misil
+    public float fireRate = 2f; // Intervalo entre disparos (en segundos)
+    
     private float nextFireTime = 0f; // Control del tiempo de disparo
+    private Vector3 spawnPoint; // Punto de generación del misil
 
     void Update() {
         // Comprobar si es momento de disparar
@@ -30,17 +31,17 @@ public class MissileLauncher : MonoBehaviour {
 
             var randY = Random.Range(0, 6f) + 1f;
 
-            spawnPoint.position = bubble.position + new Vector3(randX, randY, 0f);
+            spawnPoint = bubble.position + new Vector3(randX, randY, 0f);
         }
     }
 
     private void FireMissile() {
 
-        if (missilePrefab != null && bubble != null && spawnPoint != null) {
+        if (missilePrefab != null && bubble != null) {
 
             // Instanciar el misil en el punto de generación
             updateSpawnPoint();
-            GameObject missile = Instantiate(missilePrefab, spawnPoint.position, Quaternion.identity);
+            GameObject missile = Instantiate(missilePrefab, spawnPoint, Quaternion.identity);
 
             // Obtener el componente Missile y configurarlo
             Missile missileScript = missile.GetComponent<Missile>();

@@ -15,6 +15,8 @@ public class Missile : MonoBehaviour {
         this.speed = speed;
         this.lifetime = lifetime;
 
+        gameObject.SetActive(true);
+
         if (rb == null) {
             rb = GetComponent<Rigidbody>();
         }

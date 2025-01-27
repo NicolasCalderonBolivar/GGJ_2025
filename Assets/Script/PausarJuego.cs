@@ -6,7 +6,17 @@ using UnityEngine;
 public class PausarJuego : MonoBehaviour
 {
     public GameObject menupausa;
+    public GameObject menuOption;
     public bool juegoPausado;
+
+    private GameObject UIControl;
+    private GameObject BtnPause;
+
+    void Start() {
+        // busca el objeto por tag
+        UIControl = GameObject.FindWithTag("UIControl");
+        BtnPause = GameObject.Find("BtnPausa");
+    }
 
 
 private void  Update() 
@@ -30,17 +40,33 @@ private void  Update()
 
  public void Reanudar() 
  {
+    BtnPause.SetActive(true);
       menupausa.SetActive(false);
+    UIControl.SetActive(true);
       Time.timeScale = 1;
       juegoPausado = false;      
  } 
 
  public void Pausar()
  {
+    BtnPause.SetActive(false);
+    UIControl.SetActive(false);
       menupausa.SetActive(true);
       Time.timeScale = 0;
       juegoPausado = true;      
- } 
+ }
+
+    public void Opciones()
+    {
+        menuOption.SetActive(true);
+        menupausa.SetActive(false);
+    }
+
+    public void Volver()
+    {
+        menuOption.SetActive(false);
+        menupausa.SetActive(true);
+    }
    
      public void VolverAlMenu()
     {

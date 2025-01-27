@@ -66,6 +66,18 @@ public class PlayerControls : MonoBehaviour {
 
     // Función para manejar el movimiento
     private void Move(float moveX, float moveY) {
+
+        // validar limites del movimiento en X
+        if (player.transform.position.x >= 4f && moveX > 0 || player.transform.position.x <= -4f && moveX < 0) {
+            moveX = 0;
+        }
+
+        // validar limites del movimiento en Y
+        if (player.transform.position.y >= 7f && moveY > 0 || player.transform.position.y <= -0f && moveY < 0) {
+            moveY = 0;
+        }
+
+        // Mover el personaje en la dirección indicada
         rigidbodyPlayer.linearVelocity = new Vector3(moveX, moveY, 0f) * moveSpeed;
     }
 }
