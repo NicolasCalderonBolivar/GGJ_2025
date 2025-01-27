@@ -357,7 +357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -175, y: 888.16}
+  m_AnchoredPosition: {x: 6, y: 888.16}
   m_SizeDelta: {x: 685.3268, y: 114.9805}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &272171795
@@ -381,9 +381,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     m_FontSize: 100
-    m_FontStyle: 0
+    m_FontStyle: 3
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 200
@@ -393,7 +393,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Score = 0
+  m_Text: = 0
 --- !u!222 &272171796
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -637,7 +637,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 772402865, guid: 2d374cc655152fa46b4ed123068929a0, type: 3}
+  m_Sprite: {fileID: -1304852613, guid: 048948346070e34448f024bebb3977e5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1730,7 +1730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -825154988, guid: 222d0b61be950894ca13948516fd9e09, type: 3}
+  m_Sprite: {fileID: -915132895, guid: d7f97ceaee3fc20468fc6f697dd9f214, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3174,12 +3174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2c72fc447022649823e63213a0c3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missilePrefab: {fileID: 8421080838920681822, guid: 412a32d53991a3a4fac15f98a7839646, type: 3}
-  bubble: {fileID: 999578649}
-  missileSpeed: 4
-  fireRate: 2
-  spawnPoint: {fileID: 1929867006}
-  missileLifetime: 10
 --- !u!4 &1929867006
 Transform:
   m_ObjectHideFlags: 0

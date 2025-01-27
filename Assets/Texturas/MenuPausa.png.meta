@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 084b2f9e3cfc9de4e802c72ab8bdd2a0
+guid: 59e3837bf4e07e641a79f495c193e1ca
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: moverjostick_0
+      name: MenuPausa_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 19
-        width: 415
-        height: 414
+        x: 0
+        y: 0
+        width: 1080
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,8 +138,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73bba1f06a8e2bd43ad2920e7edc8a4a
-      internalID: -1669082427
+      spriteID: bc00d62fc27f36f429f982e0841d940b
+      internalID: 873534553
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3798b2302f767e54c8e6f2669a1aee76
+    spriteID: dd57a2e5b2ac41d4da02a5d9446ab25a
     internalID: 0
     vertices: []
     indices: 
@@ -158,7 +158,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      moverjostick_0: -1669082427
+      MenuPausa_0: 873534553
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
